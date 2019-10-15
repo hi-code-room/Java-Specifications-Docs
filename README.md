@@ -6,6 +6,6 @@ This project is a collection library of java language and virtual machine specif
 
 Use the following directories to find the corresponding version of the specification document according to your needs.
 
-#### [**Directory**](../en/README.md)
+#### [**Directory**](./en/README.md)
 
 It is helpful to give you a **Star** for the project.
