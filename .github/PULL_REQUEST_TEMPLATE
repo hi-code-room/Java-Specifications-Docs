@@ -1,0 +1,10 @@
+为什么提交 PR ? （请在 [] 中输入 X）
+
+- [ ] 翻译文档
+- [ ] 其他
+
+PR 模板
+    标题（title）：
+    zh-translation:<file_full_path>
+    内容（content）：
+    ref: https://github.com/innerpeacez/Java-Specifications-Docs/issues/<issueID>
