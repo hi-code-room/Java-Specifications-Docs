@@ -1,11 +1,109 @@
-# Java Language and Virtual Machine Specification
+# Java 语言及虚拟机规范
 
-*[中文](./README_CN.md) | [english](./README.md)*
+*[中文](./README.md) | [english](README-EN.md)*
 
-This project is a collection library of java language and virtual machine specifications. The original address of the resource is [oracle official website](https://docs.oracle.com/javase/specs/index.html), which currently only contains the contents of the official website.
+此项目为java语言及虚拟机规范的收集库，资源原地址为 [oracle官网](https://docs.oracle.com/javase/specs/index.html),目前只包含了官网中的内容
 
-Use the following directories to find the corresponding version of the specification document according to your needs.
+通过以下目录，根据自己需要寻找对应版本的规范文档
 
-#### [**Directory**](./en/README.md)
+### [**目录**](zh/README.md)
 
-It is helpful to give you a **Star** for the project.
+有帮助到你给项目一个 **Star** 吧
+
+中文翻译计划： 计划翻译官网中的文档。
+
+
+### 基本流程
+整个翻译的基本流程包括下面几个步骤：
+
+- 任务领取：在本仓库的 `Issue` 页面领取待翻译且你感兴趣的任务
+- 翻译：根据任务提示进行翻译工作
+- 提交：翻译人员提交PR等待 `review`
+- 校对：其他翻译人员对当前任务进行 `review`
+- 合并：`merge` 进入仓库，任务结束
+
+翻译人员在整个流程中需要做的是领取任务，翻译，提交PR这几步。
+
+### 翻译指南
+下面具体介绍一下如何进行翻译工作。
+
+#### 准备工作
+
+- 为保证翻译的统一性和准确性，请在翻译前仔细阅读术语表
+
+  - 常用词汇：对常见的技术词汇给出统一的翻译；
+  - 术语：文档中出现的专有技术名词，关键词，保持原文不翻译；
+
+- 仓库和分支管理
+
+  - fork 此的仓库，并作为自己仓库的上游： `git remote add upstream` ；
+
+  - 在自己的仓库，也就是 origin 上进行翻译；
+
+  - 一个任务新建一个 branch；建议名称为：`zh-trans-<isssueID>`
+
+
+#### 翻译流程
+
+##### Step1：任务浏览
+
+访问任务列表，会看到待领取任务（默认 Open 状态，label 中带有`pending`字样）。
+
+**状态label：**
+
+- **pending**：待领取的任务
+- **translating**：已经有人领取，正在翻译的任务
+- **pushed**：已翻译并生成PR，正在进行review
+- **finished**: 已经翻译完成，已合并PR
+
+可以简单的通过点击标签来进行过滤，也可以参考 github 查询语法，来完成更复杂的查询。
+
+##### Step2：任务领取
+找到未经认领的任务（`pending`状态），并且你感兴趣的任务，确定要翻译的文章之后，点击打开 Issue，在右侧的 **Assignees **栏点击 `assign yourself`
+
+注意：为保证质量，同一译者只能拥有三个 `translating` 状态的 Issue 。
+
+##### Step3：翻译
+- 请随时参考翻译约定和术语表，若对某些词汇的翻译模棱两可，可以直接回复该 Issue 请求帮助。
+
+- 译文中的英文与中文建议用空格分隔。
+
+- `md` 代码块与代码输出内容不要翻译。
+
+- 对于翻译文稿中涉及到的静态文件，直接沿用英文版的文件（例如 ![english image](/..)）。
+
+##### Step4：提交PR
+提交PR，为方便管理和辨识，请遵守下面的模板定义您的PR：
+
+```
+标题：
+zh-translation:<file_full_path>
+内容：
+ref: https://github.com/innerpeacez/Java-Specifications-Docs/issues/<issueID>
+```
+
+
+其中，标题中的 <file_full_path> 是翻译的源文件路径；内容中的 ref 是当前翻译任务的 issue 链接。
+
+##### Step5：校对（review）
+校对工作由没有翻译过当前文档的 maintainer 执行。
+
+- 对翻译的内容和原文较为精细的进行对比，保证语句通顺，无明显翻译错误
+- 对翻译的文档做概要性的检查，聚焦在行文的通顺性、一致性、符合中文语言习惯，词汇、术语准确
+
+通过后由管理员 approve 当前PR，就可以进行合并了。
+
+###### Review的基本流程
+
+- 认领 Review：
+
+  - 进入要认领的PR，回复 /review，maintainer 会将 reviewer 指派给您；
+
+- Review 重点：
+    - 打开PR提交的中文翻译，并找到对应issue中指定的源文件，逐段进行检查
+    - 词汇检查：检查译文中出现的术语、常用词汇是否遵照了术语表的要求进行翻译
+    - 格式检查：对照原文，检查译文中的标题和层次是否对应；代码块是否指定了语言；标点符号是否正确且无英文标点；超链接、图片链接是否可达；是否有错别字
+    - 语句检查：分段落通读一遍，检查是否有不通顺、语病、或者不符合中文习惯的译文
+    - 提交 review 的 comment
+##### Step6：任务完成
+通过终审后的任务会被管理员 approve，并合并到仓库中。需要您在对应的 Issue 中输入指令 `/finished`，设置 Issue 的状态为 finished，并关闭 Issue。整个翻译任务就算正式完成了。您可以继续领取新的任务进行翻译，或参与 review 工作。
