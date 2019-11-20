@@ -1,186 +1,184 @@
-# JVM 8 Specifications Docs Table of Contents
+# Java虚拟机8规范文档目录
 
-#### Preface to the Java SE 8 Edition
+#### 1 简介 1
 
-#### 1 Introduction 1
+- 1.1 简史 1
+- 1.2 Java 虚拟机 2
+- 1.3 规范文档的组织 3
+- 1.4 提醒 4
+- 1.5 反馈 4
 
-- 1.1 A Bit of History 1
-- 1.2 The Java Virtual Machine 2
-- 1.3 Organization of the Specification 3
-- 1.4 Notation 4
-- 1.5 Feedback 4
+#### 2 Java 虚拟机结构 5
 
-#### 2 The Structure of the Java Virtual Machine 5
+- 2.1 Class 类文件格式 5
+- 2.2 数据类型 6
+- 2.3 原始类型和值 6
+    - 2.3.1 整数类型和整数值 7
+    - 2.3.2 浮点类型，取值集合和浮点值 8
+    - 2.3.3 returnAddress 类型和值  10
+    - 2.3.4 boolean 类型 10
+- 2.4 引用类型与值 11
+- 2.5 运行时数据区域 11
+    - 2.5.1 pc 寄存器 12
+    - 2.5.2 Java 虚拟机栈 12
+    - 2.5.3 堆 13
+    - 2.5.4 方法区 13
+    - 2.5.5 运行时常量池 14
+    - 2.5.6 本地方法栈 14
+- 2.6 栈帧 15
+    - 2.6.1 局部变量表 16
+    - 2.6.2 操作数栈 17
+    - 2.6.3 动态链接 18
+    - 2.6.4 方法正常调用完成 18
+    - 2.6.5 方法异常调用完成 18
+- 2.7 对象的表示 19
+- 2.8 浮点运算 19
+    - 2.8.1 Java 虚拟机和 IEEE 754中浮点算法 19
+    - 2.8.2 浮点模式 20
+    - 2.8.3 数值集合转换 20
+- 2.9 特殊方法 22
+- 2.10 异常 23
+- 2.11 字节码指令集简介 25
+    - 2.11.1 数据类型与 Java 虚拟机 26
+    - 2.11.2 加载和存储指令 29
+    - 2.11.3 算术指令 30
+    - 2.11.4 类型转换指令 32
+    - 2.11.5 对象创建于操作 34
+    - 2.11.6 操作数栈管理指令 34
+    - 2.11.7 控制转移指令 34
+    - 2.11.8 方法调用和返回指令 35
+    - 2.11.9 抛出异常 36
+    - 2.11.10 同步 36
+- 2.12 类库 37
+- 2.13 公有设计与私有实现 37
 
-- 2.1 The class File Format 5
-- 2.2 Data Types 6
-- 2.3 Primitive Types and Values 6
-    - 2.3.1 Integral Types and Values 7
-    - 2.3.2 Floating-Point Types, Value Sets, and Values 8
-    - 2.3.3 The returnAddress Type and Values 10
-    - 2.3.4 The boolean Type 10
-- 2.4 Reference Types and Values 11
-- 2.5 Run-Time Data Areas 11
-    - 2.5.1 The pc Register 12
-    - 2.5.2 Java Virtual Machine Stacks 12
-    - 2.5.3 Heap 13
-    - 2.5.4 Method Area 13
-    - 2.5.5 Run-Time Constant Pool 14
-    - 2.5.6 Native Method Stacks 14
-- 2.6 Frames 15
-    - 2.6.1 Local Variables 16
-    - 2.6.2 Operand Stacks 17
-    - 2.6.3 Dynamic Linking 18
-    - 2.6.4 Normal Method Invocation Completion 18
-    - 2.6.5 Abrupt Method Invocation Completion 18
-- 2.7 Representation of Objects 19
-- 2.8 Floating-Point Arithmetic 19
-    - 2.8.1 Java Virtual Machine Floating-Point Arithmetic and IEEE 754 19
-    - 2.8.2 Floating-Point Modes 20
-    - 2.8.3 Value Set Conversion 20
-- 2.9 Special Methods 22
-- 2.10 Exceptions 23
-- 2.11 Instruction Set Summary 25
-    - 2.11.1 Types and the Java Virtual Machine 26
-    - 2.11.2 Load and Store Instructions 29
-    - 2.11.3 Arithmetic Instructions 30
-    - 2.11.4 Type Conversion Instructions 32
-    - 2.11.5 Object Creation and Manipulation 34
-    - 2.11.6 Operand Stack Management Instructions 34
-    - 2.11.7 Control Transfer Instructions 34
-    - 2.11.8 Method Invocation and Return Instructions 35
-    - 2.11.9 Throwing Exceptions 36
-    - 2.11.10 Synchronization 36
-- 2.12 Class Libraries 37
-- 2.13 Public Design, Private Implementation 37
+#### 3 Java 虚拟机编译器 39
 
-#### 3 Compiling for the Java Virtual Machine 39
+- 3.1 示例格式说明 39
+- 3.2 常量，局部变量和控制结构的使用 40
+- 3.3 算术运算 45
+- 3.4 访问运行时常量池 46
+- 3.5 更多控制结构示例 47
+- 3.6 接收参数 50
+- 3.7 调用方法 51
+- 3.8 使用类实例 53
+- 3.9 数组 55
+- 3.10 编译 switch 语句 57
+- 3.11 使用操作数栈 59
+- 3.12 抛出和处理异常 60
+- 3.13 编译 finally 语句块 63
+- 3.14 同步 66
+- 3.15 注解 67
 
-- 3.1 Format of Examples 39
-- 3.2 Use of Constants, Local Variables, and Control Constructs 40
-- 3.3 Arithmetic 45
-- 3.4 Accessing the Run-Time Constant Pool 46
-- 3.5 More Control Examples 47
-- 3.6 Receiving Arguments 50
-- 3.7 Invoking Methods 51
-- 3.8 Working with Class Instances 53
-- 3.9 Arrays 55
-- 3.10 Compiling Switches 57
-- 3.11 Operations on the Operand Stack 59
-- 3.12 Throwing and Handling Exceptions 60
-- 3.13 Compiling finally 63
-- 3.14 Synchronization 66
-- 3.15 Annotations 67
+#### 4 class 文件格式 69
 
-#### 4 The class File Format 69
+- 4.1 Class 文件的结构 70
+- 4.2 各种内部表示名称 74
+    - 4.2.1 类和接口的二进制名称 74
+    - 4.2.2 非全限定名 75
+- 4.3 描述符 75
+    - 4.3.1 语法符号75
+    - 4.3.2 字段描述符 76
+    - 4.3.3 方法描述符 77
+- 4.4 常量池 78
+    - 4.4.1 CONSTANT_Class_info 结构79
+    - 4.4.2 CONSTANT_Fieldref_info, CONSTANT_Methodref_info, and CONSTANT_InterfaceMethodref_info  结构 80
+    - 4.4.3 CONSTANT_String_info 结构 81
+    - 4.4.4 CONSTANT_Integer_info and CONSTANT_Float_info 结构 82
+    - 4.4.5 CONSTANT_Long_info and CONSTANT_Double_info 结构 83
+    - 4.4.6 CONSTANT_NameAndType_info 结构 85
+    - 4.4.7 CONSTANT_Utf8_info 结构 85
+    - 4.4.8 CONSTANT_MethodHandle_info 结构 87
+    - 4.4.9 CONSTANT_MethodType_info 结构 89
+    - 4.4.10 CONSTANT_InvokeDynamic_info 结构 89
+- 4.5 字段 90
+- 4.6 方法 92
+- 4.7 属性 95
+    - 4.7.1 自定义和命名新的属性 101
+    - 4.7.2 ConstantValue 属性101
+    - 4.7.3 Code 属性 102
+    - 4.7.4 StackMapTable 属性 106
+    - 4.7.5 Exceptions 属性 113
+    - 4.7.6 InnerClasses 属性 114
+    - 4.7.7 EnclosingMethod 属性 117
+    - 4.7.8 Synthetic 属性 118
+    - 4.7.9 Signature 属性 119
+		- 4.7.9.1 签名 120
+    - 4.7.10 SourceFile 属性 23
+    - 4.7.11 SourceDebugExtension属性124
+    - 4.7.12 LineNumberTable属性 125
+    - 4.7.13 LocalVariableTable 属性 126
+    - 4.7.14 LocalVariableTypeTable 属性 128
+    - 4.7.15 Deprecated 属性 130
+    - 4.7.16 RuntimeVisibleAnnotations 属性 131
+	    - 4.7.16.1 element_value 结构 132
+    - 4.7.17 RuntimeInvisibleAnnotations 属性 135
+    - 4.7.18 RuntimeVisibleParameterAnnotations 属性 136
+    - 4.7.19 RuntimeInvisibleParameterAnnotations 属性 138
+    - 4.7.20 RuntimeVisibleTypeAnnotations 属性 139
+        - 4.7.20.1 target_info 并查集 145
+        - 4.7.20.2 type_path 结构 149
+    - 4.7.21 RuntimeInvisibleTypeAnnotations 属性 153
+    - 4.7.22 AnnotationDefault 属性 154
+    - 4.7.23 BootstrapMethods 属性 155
+    - 4.7.24 MethodParameters 属性 157
+- 4.8 格式检查 159
+- 4.9 Java 虚拟机代码约束 160
+    - 4.9.1 静态约束 160
+    - 4.9.2 结构化约束 164
+- 4.10 Class类文件校验 167
+	- 4.10.1 类型检查验证 168
+		- 4.10.1.1 Java虚拟机制品的访问器 171
+		- 4.10.1.2 类型验证系统 175
+		- 4.10.1.3 指令表示 178
+		- 4.10.1.4 栈帧表示 180
+		- 4.10.1.5 抽象方法和本地方法类型检查185
+		- 4.10.1.6 带代码的方法类型检查 188
+		- 4.10.1.7 加载和存储指令类型检查 197
+		- 4.10.1.8 首保护成员类型检查 199
+		- 4.10.1.9 指令类型检查202
+	- 4.10.2 类型推导验证 322
+        - 4.10.2.1 通过类型推断进行验证的过程 322
+            - 4.10.2.2 字节码验证器 322
+            - 4.10.2.3 长整型和双精度浮点型的值 326
+            - 4.10.2.4 实例初始化方法和新创建的对象 326
+            - 4.10.2.5 异常和 finally 语句 328
+- 4.11 Java虚拟机限制 330
 
-- 4.1 The ClassFile Structure 70
-- 4.2 The Internal Form of Names 74
-    - 4.2.1 Binary Class and Interface Names 74
-    - 4.2.2 Unqualified Names 75
-- 4.3 Descriptors 75
-    - 4.3.1 Grammar Notation 75
-    - 4.3.2 Field Descriptors 76
-    - 4.3.3 Method Descriptors 77
-- 4.4 The Constant Pool 78
-    - 4.4.1 The CONSTANT_Class_info Structure 79
-    - 4.4.2 The CONSTANT_Fieldref_info, CONSTANT_Methodref_info, and CONSTANT_InterfaceMethodref_infoStructures 80
-    - 4.4.3 The CONSTANT_String_info Structure 81
-    - 4.4.4 The CONSTANT_Integer_info and CONSTANT_Float_info Structures 82
-    - 4.4.5 The CONSTANT_Long_info and CONSTANT_Double_info Structures 83
-    - 4.4.6 The CONSTANT_NameAndType_info Structure 85
-    - 4.4.7 The CONSTANT_Utf8_info Structure 85
-    - 4.4.8 The CONSTANT_MethodHandle_info Structure 87
-    - 4.4.9 The CONSTANT_MethodType_info Structure 89
-    - 4.4.10 The CONSTANT_InvokeDynamic_info Structure 89
-- 4.5 Fields 90
-- 4.6 Methods 92
-- 4.7 Attributes 95
-    - 4.7.1 Defining and Naming New Attributes 101
-    - 4.7.2 The ConstantValue Attribute 101
-    - 4.7.3 The Code Attribute 102
-    - 4.7.4 The StackMapTable Attribute 106
-    - 4.7.5 The Exceptions Attribute 113
-    - 4.7.6 The InnerClasses Attribute 114
-    - 4.7.7 The EnclosingMethod Attribute 117
-    - 4.7.8 The Synthetic Attribute 118
-    - 4.7.9 The Signature Attribute 119
-		- 4.7.9.1 Signatures 120
-    - 4.7.10 The SourceFile Attribute 123
-    - 4.7.11 The SourceDebugExtension Attribute 124
-    - 4.7.12 The LineNumberTable Attribute 125
-    - 4.7.13 The LocalVariableTable Attribute 126
-    - 4.7.14 The LocalVariableTypeTable Attribute 128
-    - 4.7.15 The Deprecated Attribute 130
-    - 4.7.16 The RuntimeVisibleAnnotations Attribute 131
-	    - 4.7.16.1 The element_value structure 132
-    - 4.7.17 The RuntimeInvisibleAnnotations Attribute 135
-    - 4.7.18 The RuntimeVisibleParameterAnnotations Attribute 136
-    - 4.7.19 The RuntimeInvisibleParameterAnnotations Attribute 138
-    - 4.7.20 The RuntimeVisibleTypeAnnotations Attribute 139
-        - 4.7.20.1 The target_info union 145
-        - 4.7.20.2 The type_path structure 149
-    - 4.7.21 The RuntimeInvisibleTypeAnnotations Attribute 153
-    - 4.7.22 The AnnotationDefault Attribute 154
-    - 4.7.23 The BootstrapMethods Attribute 155
-    - 4.7.24 The MethodParameters Attribute 157
-- 4.8 Format Checking 159
-- 4.9 Constraints on Java Virtual Machine Code 160
-    - 4.9.1 Static Constraints 160
-    - 4.9.2 Structural Constraints 164
-- 4.10 Verification of class Files 167
-	- 4.10.1 Verification by Type Checking 168
-		- 4.10.1.1 Accessors for Java Virtual Machine Artifacts 171
-		- 4.10.1.2 Verification Type System 175
-		- 4.10.1.3 Instruction Representation 178
-		- 4.10.1.4 Stack Map Frame Representation 180
-		- 4.10.1.5 Type Checking Abstract and Native Methods 185
-		- 4.10.1.6 Type Checking Methods with Code 188
-		- 4.10.1.7 Type Checking Load and Store Instructions 197
-		- 4.10.1.8 Type Checking for protected Members 199
-		- 4.10.1.9 Type Checking Instructions 202
-	- 4.10.2 Verification by Type Inference 322
-        - 4.10.2.1 The Process of Verification by Type Inference 322
-        - 4.10.2.2 The Bytecode Verifier 322
-        - 4.10.2.3 Values of Types long and double 326
-        - 4.10.2.4 Instance Initialization Methods and Newly Created Objects 326
-        - 4.10.2.5 Exceptions and finally 328
-- 4.11 Limitations of the Java Virtual Machine 330
+#### 5 加载，链接与初始化 333
 
-#### 5 Loading, Linking, and Initializing 333
+- 5.1 运行时常量池 333
+- 5.2 Java 虚拟机启动 336
+- 5.3 创建和加载 336
+    - 5.3.1 使用 Bootstrap Class Loader 加载器加载 338
+    - 5.3.2 使用用户自定义类加载器加载 339
+    - 5.3.3 创建数组类 340
+    - 5.3.4 加载限制 340
+    - 5.3.5 从Class类文件表示得到一个类 342
+- 5.4 链接 343
+    - 5.4.1 验证 344
+    - 5.4.2 准备 344
+    - 5.4.3 解析 345
+        - 5.4.3.1 类和接口解析 346
+        - 5.4.3.2 字段解析 347
+        - 5.4.3.3 方法解析 348
+        - 5.4.3.4 接口方法解析 350
+        - 5.4.3.5 方法类型和方法处理解析 351
+        - 5.4.3.6 调用站点说明符解析 355
+    - 5.4.4 访问控制 356
+    - 5.4.5 覆盖 356
+- 5.5 初始化 357
+- 5.6 绑定本地方法实现 360
+- 5.7 Java 虚拟机退出 360
 
-- 5.1 The Run-Time Constant Pool 333
-- 5.2 Java Virtual Machine Startup 336
-- 5.3 Creation and Loading 336
-    - 5.3.1 Loading Using the Bootstrap Class Loader 338
-    - 5.3.2 Loading Using a User-defined Class Loader 339
-    - 5.3.3 Creating Array Classes 340
-    - 5.3.4 Loading Constraints 340
-    - 5.3.5 Deriving a Class from a class File Representation 342
-- 5.4 Linking 343
-    - 5.4.1 Verification 344
-    - 5.4.2 Preparation 344
-    - 5.4.3 Resolution 345
-        - 5.4.3.1 Class and Interface Resolution 346
-        - 5.4.3.2 Field Resolution 347
-        - 5.4.3.3 Method Resolution 348
-        - 5.4.3.4 Interface Method Resolution 350
-        - 5.4.3.5 Method Type and Method Handle Resolution 351
-        - 5.4.3.6 Call Site Specifier Resolution 355
-    - 5.4.4 Access Control 356
-    - 5.4.5 Overriding 356
-- 5.5 Initialization 357
-- 5.6 Binding Native Method Implementations 360
-- 5.7 Java Virtual Machine Exit 360
+#### 6 Java虚拟机指令集 361
 
-#### 6 The Java Virtual Machine Instruction Set 361
-
-- 6.1 Assumptions: The Meaning of "Must" 361
-- 6.2 Reserved Opcodes 362
-- 6.3 Virtual Machine Errors 362
-- 6.4 Format of Instruction Descriptions 363
+- 6.1 设定：“必须”的含义 361
+- 6.2 保留操作码 362
+- 6.3 虚拟机错误 362
+- 6.4 指令描述格式 363
 	- mnemonic 364
-- 6.5 Instructions 366
+- 6.5 指令集 366
     - aaload 367
     - aastore 368 
     - aconst_null 370 
@@ -331,8 +329,8 @@
     - tableswitch 560 
     - wide 562
 		
-#### 7 Opcode Mnemonics by Opcode 565 
+#### 7 Opcode 565 的操作码助记符
 
-- Index 569
+- 索引 569
 
 #### A Limited License Grant 587
